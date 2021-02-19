@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_3_1", "Task_3_1.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_3_2", "..\Task_3_2\Task_3_2.csproj", "{2DC8AAFE-2C3A-40CE-9799-D31D915921C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_3_3", "..\Task_3_3\Task_3_3.csproj", "{AE84EA81-053D-4983-A25F-FC6C8C5C6AFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_3_3", "..\Task_3_3\Task_3_3.csproj", "{AE84EA81-053D-4983-A25F-FC6C8C5C6AFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_3_Star", "..\Task_3_Star\Task_3_Star.csproj", "{332FF13D-60F7-4B1E-B9ED-A6617A763DC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_3_Star", "..\Task_3_Star\Task_3_Star.csproj", "{332FF13D-60F7-4B1E-B9ED-A6617A763DC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task_3_4", "..\Task_3_4\Task_3_4.csproj", "{EFB023EB-529D-492C-BC9F-859FD24DEBD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{332FF13D-60F7-4B1E-B9ED-A6617A763DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{332FF13D-60F7-4B1E-B9ED-A6617A763DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{332FF13D-60F7-4B1E-B9ED-A6617A763DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB023EB-529D-492C-BC9F-859FD24DEBD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB023EB-529D-492C-BC9F-859FD24DEBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB023EB-529D-492C-BC9F-859FD24DEBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB023EB-529D-492C-BC9F-859FD24DEBD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
