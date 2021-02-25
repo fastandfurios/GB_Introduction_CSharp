@@ -1,0 +1,18 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/HomeWork_Lesson_3/.vs/HomeWork_Lesson_3/v16/.suo
+/HomeWork_Lesson_3/.vs/HomeWork_Lesson_3/DesignTimeBuild/.dtbcache.v2
+/Lesson_4/.vs/Lesson_4/v16/.suo
+/Lesson_4/Lesson_4/obj/Debug/net5.0/.NETCoreApp,Version=v5.0.AssemblyAttributes.cs
+/Lesson_4/Lesson_4/obj/Debug/net5.0/Lesson_4.AssemblyInfo.cs
+/Lesson_4/Lesson_4/obj/Debug/net5.0/Lesson_4.AssemblyInfoInputs.cache
+/Lesson_4/Lesson_4/obj/Debug/net5.0/Lesson_4.assets.cache
+/Lesson_4/Lesson_4/obj/Debug/net5.0/Lesson_4.csprojAssemblyReference.cache
+/Lesson_4/Lesson_4/obj/Debug/net5.0/Lesson_4.GeneratedMSBuildEditorConfig.editorconfig
+/Lesson_4/Lesson_4/obj
+/Lesson_4/Lesson_4/Lesson_4.csproj
+/Lesson_4/Lesson_4.sln
+/Lesson_4/.vs/Lesson_4/DesignTimeBuild
+/Lesson_4/Lesson_4/bin/Debug/net5.0
