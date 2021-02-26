@@ -35,12 +35,22 @@ namespace Task_4_3
 			numberMonth = Console.ReadLine();
 		}
 
+		/// <summary>
+		/// Создает массив чисел в строковом представлении
+		/// </summary>
+		/// <param name="arrayNumbersMonth">Пустой массив</param>
 		static void FillArray(string[] arrayNumbersMonth)
 		{
 			for (int i = 0; i < arrayNumbersMonth.Length; i++)
 				arrayNumbersMonth[i] = (i + 1).ToString();
 		}
 
+		/// <summary>
+		/// Сравнивает введенный номер месяца пользователя со значениями в массиве
+		/// </summary>
+		/// <param name="arrayNumbersMonth">Массив строк</param>
+		/// <param name="numberMonth">Номер месяца</param>
+		/// <returns>Либо истина, либо ложь</returns>
 		static bool Compare(string[] arrayNumbersMonth, string numberMonth)
 		{
 			foreach (var number in arrayNumbersMonth)
@@ -52,6 +62,10 @@ namespace Task_4_3
 			return false;
 		}
 
+		/// <summary>
+		/// Получает результат в зависимости от введенного пользователем номера месяца
+		/// </summary>
+		/// <param name="number">Номер месяца</param>
 		static void GetSeason(int number)
 		{
 			if((int)Season.Зима <= number && number < (int)Season.Весна || number == (int)Season.Декабрь)
