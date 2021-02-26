@@ -54,7 +54,7 @@ namespace Task_4_3
 
 		static void GetSeason(int number)
 		{
-			if((int)Season.Зима <= number && number < (int)Season.Весна || number == 12)
+			if((int)Season.Зима <= number && number < (int)Season.Весна || number == (int)Season.Декабрь)
 				Console.WriteLine($"Время года: {Season.Зима}");
 			
 			if((int)Season.Весна <= number && number < (int)Season.Лето)
@@ -63,7 +63,7 @@ namespace Task_4_3
 			if((int)Season.Лето <= number && number < (int)Season.Осень)
 				Console.WriteLine($"Время года: {Season.Лето}");
 
-			if((int)Season.Осень <= number && number < 12)
+			if((int)Season.Осень <= number && number < (int)Season.Декабрь)
 				Console.WriteLine($"Время года: {Season.Осень}");
 		}
 	}
@@ -73,6 +73,7 @@ namespace Task_4_3
 		Зима = 1,
 		Весна = 3,
 		Лето = 6,
-		Осень = 9
+		Осень = 9,
+		Декабрь = 12
 	}
 }
