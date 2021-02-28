@@ -22,9 +22,6 @@ namespace Lesson_5.Task_5_2
 		}
 
 		private void WriteCurrentTime()
-		{
-			File.WriteAllText(_fileName, DateTime.Now.ToString());
-			File.AppendAllText(_fileName, Environment.NewLine);
-		}
+			=> File.AppendAllLines(_fileName, new[] {$"Текущее время: {DateTime.Now.ToString("T")}"});
 	}
 }
