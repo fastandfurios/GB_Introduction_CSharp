@@ -10,8 +10,13 @@ namespace Lesson_5.Task_5_3
     {
 	    private string _emptyNumbers;
 	    private Converter _converter = new Converter();
+	    private BinWriter _binWriter = new BinWriter();
 
-        public void Input()
+		/// <summary>
+		/// Дает ввести не пустую строку пользователю, если строка пустая, повторяет действие
+		/// </summary>
+		/// <param name="fileName">Принимает параметр (имя файла), куда будем сохранять введенную строку</param>
+		public void Input(string fileName)
         {
 			do
 			{
@@ -20,7 +25,9 @@ namespace Lesson_5.Task_5_3
 				_emptyNumbers = Console.ReadLine();
 			} while (_emptyNumbers == string.Empty);
 
-			_converter.Convert(_emptyNumbers);
+			byte[] array = _converter.Convert(_emptyNumbers);
+
+			_binWriter.WriteBin(array, fileName);
         }
     }
 }

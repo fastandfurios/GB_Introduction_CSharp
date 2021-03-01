@@ -9,9 +9,12 @@ namespace Lesson_5.Task_5_3
 {
     public class BinWriter
     {
-	    private string fileName = "bytes.bin";
-
-	    public void WriteBin(byte[] array)
+        /// <summary>
+        /// Записывает массив байт в файл .bin
+        /// </summary>
+        /// <param name="array">Массив байт</param>
+        /// <param name="fileName">Имя файла</param>
+	    public void WriteBin(byte[] array,string fileName)
 			=> File.WriteAllBytes(fileName, array);
     }
 }
