@@ -1,4 +1,5 @@
 ﻿using System;
+using LessonExeption.DirectoryAndFiles;
 
 namespace LessonExeption
 {
@@ -6,7 +7,8 @@ namespace LessonExeption
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			MainProgram program = new MainProgram();
+			program.Start();
 		}
 	}
 }
