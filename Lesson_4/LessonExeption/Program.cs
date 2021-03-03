@@ -1,5 +1,6 @@
 ﻿using System;
 using LessonExeption.DirectoryAndFiles;
+using LessonExeption.Employee;
 
 namespace LessonExeption
 {
@@ -9,6 +10,9 @@ namespace LessonExeption
 		{
 			MainProgram program = new MainProgram();
 			program.Start();
+
+			Starter starter = new Starter();
+			starter.Start();
 		}
 	}
 }
