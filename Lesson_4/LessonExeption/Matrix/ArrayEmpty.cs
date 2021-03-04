@@ -8,6 +8,9 @@ namespace LessonExeption.Matrix
 {
     public class ArrayEmpty
     {
-        
+        public void Run()
+		{
+
+		}
     }
 }

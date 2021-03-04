@@ -1,6 +1,7 @@
 ﻿using System;
 using LessonExeption.DirectoryAndFiles;
 using LessonExeption.Employee;
+using LessonExeption.Matrix;
 using LessonExeption.ToDoList;
 
 namespace LessonExeption
@@ -15,12 +16,15 @@ namespace LessonExeption
 			program.Start();
 
 			//2 задача
-			StarterProgram starterProgram = new StarterProgram();
-			starterProgram.Start();
+			//StarterProgram starterProgram = new StarterProgram();
+			//starterProgram.Start();
+
+			//InputMatrix inut = new InputMatrix();
+			//inut.Input();
 
 			//4 задача
-			Starter starter = new Starter();
-			starter.Start();
+			//Starter starter = new Starter();
+			//starter.Start();
 		}
 	}
 }

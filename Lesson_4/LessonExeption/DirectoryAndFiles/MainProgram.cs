@@ -26,6 +26,8 @@ namespace LessonExeption.DirectoryAndFiles
 		{
 			SaveFilesLoop();
 			SaveFilesRecursion();
+			GetDirectoryAndFiles();
+			
 		}
 
 		/// <summary>
@@ -80,5 +82,19 @@ namespace LessonExeption.DirectoryAndFiles
 		        Directory.CreateDirectory(dir);
 	        }
         }
+
+		/// <summary>
+		/// Получает список всех директорий и файлов из заданной директории и сохраняет их в текстовый файл
+		/// </summary>
+		private void GetDirectoryAndFiles()
+		{
+			string[] entries = Directory.GetFileSystemEntries(_workDir, "*", SearchOption.AllDirectories);
+			File.WriteAllLines("result.txt", entries);
+		}
+
+		private void GetDirectoryAndFilesRecursion()
+		{
+
+		}
 	}
 }
