@@ -22,7 +22,7 @@ namespace LessonExeption.ToDoList
 
 	    private void Run()
 	    {
-		    if (File.Exists(_fileName))
+		    if (File.Exists(_fileName) && File.ReadAllText(_fileName).Length != 0)
 		    {
 				_deserilizer.DeserilizArrayTask(_fileName);
 				_array = _outputData.OutputArrayNoFlags(_deserilizer.ArrayTasks);
