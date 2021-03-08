@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,26 +25,32 @@ namespace LessonExeption.ToDoList
 			    Console.Write("Введите количество задач: ");
 			    _number = Convert.ToInt32(Console.ReadLine());
 			    Console.WriteLine();
+
+			    if (_number > 0)
+				    InputToDoList();
+			    else
+				    Console.WriteLine("Конец программы!");
 			}
 		    catch (Exception e)
 		    {
-			    Debug.WriteLine(e.Message);
+			   Console.WriteLine(e.Message);
 		    }
-
-		    if (_number > 0)
-			    InputToDoList();
-		    else
-			    Console.WriteLine("Конец программы!");
 	    }
 
 	    private void InputToDoList()
 	    {
 		    _array = new ToDo[_number];
-
-		    for (int i = 0; i < _array.Length; i++)
+		    try
 		    {
-			    Console.Write($"{i+1} ");
-			    _array[i] = new ToDo { Title = Console.ReadLine(), IsDone = false };
+			    for (int i = 0; i < _array.Length; i++)
+			    {
+				    Console.Write($"{i + 1} ");
+				    _array[i] = new ToDo { Title = Console.ReadLine(), IsDone = false };
+			    }
+			}
+		    catch (Exception e)
+		    {
+			    Console.WriteLine(e);
 		    }
 	    }
 
@@ -53,13 +58,22 @@ namespace LessonExeption.ToDoList
 	    {
 		    Console.WriteLine();
 		    Console.WriteLine("Введите номер задачи, которую хотите выполнить: ");
-		    _numberTask = Convert.ToInt32(Console.ReadLine());
-			if(_numberTask != 0)
-				return _numberTask;
-			else
-				Console.WriteLine("Конец программы!");
+		    try
+		    {
+			    _numberTask = Convert.ToInt32(Console.ReadLine());
+			    if (_numberTask > 0)
+				    return _numberTask;
+			    else
+				    Console.WriteLine("Конец программы!");
 
-			return 1;
+			    return 1;
+			}
+		    catch (Exception e)
+		    {
+			    Console.WriteLine(e);
+		    }
+
+		    return 1;
 	    }
     }
 }
