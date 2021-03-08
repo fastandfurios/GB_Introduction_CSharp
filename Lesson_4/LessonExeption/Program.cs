@@ -12,20 +12,20 @@ namespace LessonExeption
 		{
 
 			//1 задача
-			MainProgram program = new MainProgram();
-			program.Start();
+			//MainProgram program = new MainProgram();
+			//program.Start();
 
 			//2 задача
 			StarterProgram starterProgram = new StarterProgram();
 			starterProgram.Start();
 
 			//3 задача
-			ArrayEmpty array = new ArrayEmpty();
-			array.Run();
+			//ArrayEmpty array = new ArrayEmpty();
+			//array.Run();
 
 			//4 задача
-			Starter starter = new Starter();
-			starter.Start();
+			//Starter starter = new Starter();
+			//starter.Start();
 		}
 	}
 }

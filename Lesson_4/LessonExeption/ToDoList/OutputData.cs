@@ -8,38 +8,16 @@ namespace LessonExeption.ToDoList
 {
     public class OutputData
     {
-	    private int _count = 1;
+	    private int _count;
 	    private string _done = "[x]";
-	    private ToDo[] _array;
 
 	    private int _countFlags;
 	    public int CountFlags
 	    {
 		    get => _countFlags;
 	    }
-		
-	    public ToDo[] OutputArrayNoFlags(ToDo[] array)
-	    {
-		    _array = array;
-
-		    Console.WriteLine("Список задач:\n");
-		    foreach (ToDo toDo in array)
-		    {
-			    if (toDo.IsDone)
-			    {
-				    Console.WriteLine($"{_count} {_done} {toDo.Title}");
-				    _countFlags++;
-			    }
-				else
-					Console.WriteLine($"{_count} {toDo.Title}");
-
-				_count++;
-		    }
-
-		    return _array;
-	    }
-
-	    public ToDo[] OutputArrayFlags(int numberArray)
+	    
+	    public ToDo[] OutputToDoList(ToDo[] _array,int numberArray)
 	    {
 		    _count = 1;
 		    int i = 0;
@@ -56,9 +34,16 @@ namespace LessonExeption.ToDoList
 					_countFlags++;
 				}
 				else if (toDo.IsDone)
+				{
 					Console.WriteLine($"{_count} {_done} {toDo.Title}");
+					_countFlags++;
+				}
 				else
+				{
 					Console.WriteLine($"{_count} {toDo.Title}");
+					_countFlags--;
+				}
+					
 					
 				_count++;
 				i++;

@@ -26,10 +26,16 @@ namespace LessonExeption.DirectoryAndFiles
 		/// </summary>
 		private void GetDirectoryAndFiles()
 		{
-			string[] entries = Directory.GetFileSystemEntries(_workDir, "*", SearchOption.AllDirectories);
-			File.WriteAllLines("result.txt", entries);
+			if (_workDir != null)
+			{
+				string[] entries = Directory.GetFileSystemEntries(_workDir, "*", SearchOption.AllDirectories);
+				File.WriteAllLines("result.txt", entries);
+			}
 		}
 
+		/// <summary>
+		/// Получает список всех директорий в заданной директории с помощью рекурсии и записывает их в текстовый файл
+		/// </summary>
 		private void GetDirectoryRecursion()
 		{
 			if(_workDir != null && _i < Directory.GetDirectories(_workDir).Length)
@@ -44,6 +50,9 @@ namespace LessonExeption.DirectoryAndFiles
 			GetDirectoryRecursion();
 		}
 
+		/// <summary>
+		/// Получает список всех файлов в заданной директории с помощью рекурсии и записывает их в текстовый файл
+		/// </summary>
 		private void GetFilesRecursion()
 		{
 			if (_workDir != null && _count < Directory.GetFiles(_workDir).Length)
