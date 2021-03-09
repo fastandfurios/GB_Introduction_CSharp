@@ -57,7 +57,7 @@ namespace LessonExeption.ToDoList
 	    public int InputNumberTask()
 	    {
 		    Console.WriteLine();
-		    Console.WriteLine("Введите номер задачи, которую хотите выполнить: ");
+		    Console.Write("Введите номер задачи, которую хотите выполнить: ");
 		    try
 		    {
 			    _numberTask = Convert.ToInt32(Console.ReadLine());

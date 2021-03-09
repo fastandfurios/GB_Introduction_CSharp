@@ -9,13 +9,13 @@ namespace LessonExeption.ToDoList
     public class OutputData
     {
 	    private int _count;
-	    private string _done = "[x]";
+	    private string _done = "[x]", _noDone = "[ ]";
 
 	    private int _countFlags;
-	    public int CountFlags
-	    {
-		    get => _countFlags;
-	    }
+	    public int CountFlags => _countFlags;
+
+	    private int _countNoFlags;
+	    public int CountNoFlags => _countNoFlags;
 	    
 	    public ToDo[] OutputToDoList(ToDo[] _array,int numberArray)
 	    {
@@ -27,23 +27,17 @@ namespace LessonExeption.ToDoList
 
 			foreach (ToDo toDo in _array)
 			{
-				if (_count == numberArray)
+				if (_count == numberArray || toDo.IsDone)
 				{
 					Console.WriteLine($"{_count} {_done} {toDo.Title}");
 					_array[i].IsDone = true;
 					_countFlags++;
 				}
-				else if (toDo.IsDone)
-				{
-					Console.WriteLine($"{_count} {_done} {toDo.Title}");
-					_countFlags++;
-				}
 				else
 				{
-					Console.WriteLine($"{_count} {toDo.Title}");
-					_countFlags--;
+					Console.WriteLine($"{_count} {_noDone} {toDo.Title}");
+					_countNoFlags++;
 				}
-					
 					
 				_count++;
 				i++;

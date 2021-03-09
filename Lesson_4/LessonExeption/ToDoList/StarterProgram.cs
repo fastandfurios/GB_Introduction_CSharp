@@ -26,7 +26,7 @@ namespace LessonExeption.ToDoList
 				_deserilizer.DeserilizArrayTask(_fileName);
 				_array = _outputData.OutputToDoList(_deserilizer.ArrayTasks, 0);
 
-				if (_outputData.CountFlags == _array.Length)
+				if (_outputData.CountFlags >= _outputData.CountNoFlags)
 				{
 					Console.WriteLine("\nВсе задачи выполнены! Список очистится автоматически!");
 					Thread.Sleep(5000);
@@ -39,6 +39,7 @@ namespace LessonExeption.ToDoList
 					_numberTask = _inputData.InputNumberTask();
 					_array = _outputData.OutputToDoList(_array, _numberTask);
 					_serilizer.SerilizeArrayTask(_array, _fileName);
+					Run();
 				}
 		    }
 		    else
