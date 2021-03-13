@@ -139,33 +139,18 @@ namespace CrossZero
         {
 	        for (int i = 0; i < field.GetLength(0); i++)
 	        {
-		        if (field[i, 0] == sym && field[i, 1] == sym && field[i, 2] == sym && field[i, 3] == sym)
-			        return true;
-		        else if (field[i, 1] == sym && field[i, 2] == sym && field[i, 3] == sym && field[i, 4] == sym)
-			        return true;
-                
-		        if (field[0, i] == sym && field[1, i] == sym && field[2, i] == sym && field[3, i] == sym)
-			        return true;
-		        else if (field[1, i] == sym && field[2, i] == sym && field[3, i] == sym && field[4, i] == sym)
+		        if ((field[i, 0] == sym || field[i, 4] == sym) && (field[i, 1] == sym && field[i, 2] == sym && field[i, 3] == sym) ||
+		            (field[0, i] == sym || field[4, i] == sym) && (field[1, i] == sym && field[2, i] == sym && field[3, i] == sym))
 			        return true;
 	        }
 
-	        if (field[0, 0] == sym && field[1, 1] == sym && field[2, 2] == sym && field[3, 3] == sym)
+	        if (((field[0, 0] == sym || field[4, 4] == sym) && (field[1, 1] == sym && field[3, 3] == sym) ||
+	            (field[4, 0] == sym || field[0, 4] == sym) && (field[3, 1] == sym && field[1, 3] == sym)) && field[2, 2] == sym)
 		        return true;
-	        else if (field[1, 1] == sym && field[2, 2] == sym && field[3, 3] == sym && field[4, 4] == sym)
-		        return true;
-
-	        if (field[4, 0] == sym && field[3, 1] == sym && field[2, 2] == sym && field[1, 3] == sym)
-		        return true;
-            else if (field[0, 4] == sym && field[1, 3] == sym && field[2, 2] == sym && field[3, 1] == sym)
-		        return true;
-            else if (field[3, 0] == sym && field[2, 1] == sym && field[1, 2] == sym && field[0, 3] == sym)
-		        return true;
-            else if (field[4, 1] == sym && field[3, 2] == sym && field[2, 3] == sym && field[1, 4] == sym)
-		        return true;
-            else if (field[1, 0] == sym && field[2, 1] == sym && field[3, 2] == sym && field[4, 3] == sym)
-		        return true;
-            else if (field[0, 1] == sym && field[1, 2] == sym && field[2, 3] == sym && field[3, 4] == sym)
+            else if (((field[4, 1] == sym && field[1, 4] == sym ||
+					 field[1, 0] == sym && field[4, 3] == sym) && field[3, 2] == sym ||
+					 (field[3, 0] == sym && field[0, 3] == sym ||
+                     field[0, 1] == sym && field[3, 4] == sym) && field[1, 2] == sym) && (field[2, 1] == sym || field[2, 3] == sym))
 		        return true;
 
             return false;
