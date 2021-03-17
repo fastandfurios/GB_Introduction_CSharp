@@ -129,17 +129,18 @@ namespace CrossZero
         {
             int x;
             int y;
-            do
+
+	        do
             {
                 x = random.Next(0, SIZE_X);
                 y = random.Next(0, SIZE_Y);
             } while (!IsCellValid(y, x));
             SetSym(y, x, AI_DOT);
         }
-
+        
 
         /// <summary>
-        /// Проверяет вертикальную и горизонтальные линии
+        /// Проверяет вертикальную и горизонтальную линии
         /// </summary>
         /// <param name="sym">Символ в клетке</param>
         /// <param name="offsetX">Смещение по X</param>
@@ -153,9 +154,9 @@ namespace CrossZero
 		        for (int j = offsetY; j < _winLine + offsetY; j++)
 		        {
 			        if (field[i, j] == sym)
-				        column++;
-			        if (field[j, i] == sym)
 				        rows++;
+			        if (field[j, i] == sym)
+				        column++;
 		        }
 
 		        if (column == _winLine || rows == _winLine)
@@ -183,6 +184,7 @@ namespace CrossZero
 		        toRight = toRight && (field[i + offsetX, i + offsetY] == sym);
 		        toLeft = toLeft && (field[_winLine - i - 1 + offsetX, i + offsetY] == sym);
 	        }
+
 	        if (toRight || toLeft)
 		        return true;
 
