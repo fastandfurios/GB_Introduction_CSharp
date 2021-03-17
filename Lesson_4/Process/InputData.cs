@@ -8,20 +8,17 @@ namespace Process
 {
     public class InputData
     {
-	    private string _name;
-
-
+	    private string _object;
+		
 	    public object Input()
 	    {
-		    Console.Write("Введите PID или имя процесса, который нужно завершить: ");
-		    _name = Console.ReadLine();
+		    Console.Write("\nВведите PID или имя процесса, который нужно завершить: ");
+		    _object = Console.ReadLine();
 			
-		    if (int.TryParse(_name, out int result))
-		    {
+		    if (int.TryParse(_object, out int result))
 			    return result;
-		    }
 
-		    return _name;
+		    return _object;
 	    }
     }
 }

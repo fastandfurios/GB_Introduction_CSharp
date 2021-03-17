@@ -11,22 +11,19 @@ namespace Process
     {
 	    private string _entryImageName = new string('=', 25);
 	    private string _entryPID = new string('=', 8);
-	    private string _entryMemUsage = new string('=', 16);
 	    private DiagProcess[] _array = DiagProcess.GetProcesses();
 	    private InputData _input = new InputData();
 
-	    public void Run() => DrawHead();
-
-	    private void DrawHead()
+	    public void Run()
 	    {
-		    Console.Write($"Image Name");
-		    Console.Write($"{"PID",24} ");
-		    Console.Write($"{"Mem Usage", 16}");
-		    Console.WriteLine();
-		    Console.WriteLine($"{_entryImageName} {_entryPID} {_entryMemUsage}");
+		    Console.Title = nameof(TaskManager);
+		    DrawHead();
+		    PrintList();
+			RemoveProcess();
+	    }
 
-			PrintList();
-		}
+	    private void DrawHead() 
+		    => Console.Write($"Image Name {"PID", 23}\n{_entryImageName} {_entryPID}\n");
 
 	    private void PrintList()
 	    {
@@ -39,8 +36,8 @@ namespace Process
 
 				    PrintList("...", process, 0, 0);
 				}
-				else
-					PrintList(process.ProcessName, process, _entryImageName.Length, process.ProcessName.Length);
+			    else
+				    PrintList(process.ProcessName, process, _entryImageName.Length, process.ProcessName.Length);
 		    }
 	    }
 
@@ -48,23 +45,41 @@ namespace Process
 	    {
 		    Console.Write($"{str}" +
 		                  $"{new string(' ', number + _entryPID.Length + 1 - length - process.Id.ToString().Length)}" +
-		                  $"{process.Id}" +
-		                  $"{new string(' ', 1 + _entryMemUsage.Length - process.VirtualMemorySize64.ToString().Length)}" +
-		                  $"{process.VirtualMemorySize64}");
+		                  $"{process.Id}");
 		    Console.WriteLine();
 		}
 
-	    private void RemoveProcessByNumber()
+	    private void RemoveProcess()
 	    {
-		    int pid = (int)_input.Input();
+		    int pid = 0;
+		    string name = string.Empty;
+		    object obj = _input.Input();
 
-		    foreach (var process in _array)
+			if (obj is int)
+			    pid = (int)obj;
+		    
+			if(obj is string)
+				name = (string)obj;
+
+			foreach (var process in _array)
 		    {
-			    if (pid == process.Id)
-			    {
+			    if (pid != 0)
+				    if (process.Id == pid)
+				    {
+					    name = process.ProcessName;
+					    process.WaitForExit(100);
+					}
+					    
 
-			    }
+			    if(name != string.Empty)
+				    if (name.Equals(process.ProcessName))
+				    {
+					    pid = process.Id;
+					    process.WaitForExit(100);
+					}
 		    }
+
+			Console.WriteLine($"Процесс {name} {pid} завершен!");
 	    }
 	}
 }
