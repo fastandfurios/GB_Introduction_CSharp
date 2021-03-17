@@ -11,7 +11,11 @@ namespace CrossZero
         static int SIZE_X = 5;
         static int SIZE_Y = 5;
 
-	    char[,] field = new char[SIZE_Y, SIZE_X];
+        private int _x;
+        private int _y;
+        private int _winLine = 4;
+
+        char[,] field = new char[SIZE_Y, SIZE_X];
 
 		char PLAYER_DOT = 'X';
         char AI_DOT = 'O';
@@ -112,15 +116,13 @@ namespace CrossZero
 
         private void PlayerStep()
         {
-            int x;
-            int y;
             do
             {
                 Console.WriteLine($"Введите координаты X Y (1-{SIZE_X})");
-                x = Int32.Parse(Console.ReadLine()) - 1;
-                y = Int32.Parse(Console.ReadLine()) - 1;
-            } while (!IsCellValid(y, x));
-            SetSym(y, x, PLAYER_DOT);
+                _x = Int32.Parse(Console.ReadLine()) - 1;
+                _y = Int32.Parse(Console.ReadLine()) - 1;
+            } while (!IsCellValid(_y, _x));
+            SetSym(_y, _x, PLAYER_DOT);
         }
 
         private void AiStep()
@@ -135,25 +137,65 @@ namespace CrossZero
             SetSym(y, x, AI_DOT);
         }
 
-        private bool CheckWin(char sym)
+
+        /// <summary>
+        /// Проверяет вертикальную и горизонтальные линии
+        /// </summary>
+        /// <param name="sym">Символ в клетке</param>
+        /// <param name="offsetX">Смещение по X</param>
+        /// <param name="offsetY">Смещение по Y</param>
+        /// <returns>Либо истина, либо ложь</returns>
+        private bool CheckLines(char sym, int offsetX, int offsetY)
         {
-	        for (int i = 0; i < field.GetLength(0); i++)
+	        bool column = true, rows = true;
+	        for (int i = offsetX; i < _winLine + offsetX; i++)
 	        {
-		        if ((field[i, 0] == sym || field[i, 4] == sym) && (field[i, 1] == sym && field[i, 2] == sym && field[i, 3] == sym) ||
-		            (field[0, i] == sym || field[4, i] == sym) && (field[1, i] == sym && field[2, i] == sym && field[3, i] == sym))
+		        for (int j = offsetY; j < _winLine + offsetY; j++)
+		        {
+			        column = column && (field[i, j] == sym);
+			        rows = rows && (field[j, i] == sym);
+		        }
+
+		        if (column || rows)
 			        return true;
 	        }
 
-	        if (((field[0, 0] == sym || field[4, 4] == sym) && (field[1, 1] == sym && field[3, 3] == sym) ||
-	            (field[4, 0] == sym || field[0, 4] == sym) && (field[3, 1] == sym && field[1, 3] == sym)) && field[2, 2] == sym)
-		        return true;
-            else if (((field[4, 1] == sym && field[1, 4] == sym ||
-					 field[1, 0] == sym && field[4, 3] == sym) && field[3, 2] == sym ||
-					 (field[3, 0] == sym && field[0, 3] == sym ||
-                     field[0, 1] == sym && field[3, 4] == sym) && field[1, 2] == sym) && (field[2, 1] == sym || field[2, 3] == sym))
+	        return false;
+        }
+
+        /// <summary>
+        /// Проверяет диагонали 
+        /// </summary>
+        /// <param name="sym">Символ в клетке</param>
+        /// <param name="offsetX">Смещение по X</param>
+        /// <param name="offsetY">Смещение по Y</param>
+        /// <returns>Либо истину, либо ложь</returns>
+        private bool CheckDiagonal(char sym, int offsetX, int offsetY)
+        {
+	        bool toright = true, toleft = true;
+	        for (int i = 0; i < _winLine; i++)
+	        {
+		        toright = toright && (field[i + offsetX, i + offsetY] == sym);
+		        toleft = toleft && (field[_winLine - i - 1 + offsetX, i + offsetY] == sym);
+	        }
+	        if (toright || toleft)
 		        return true;
 
-            return false;
+	        return false;
+        }
+
+        private bool CheckWin(char sym)
+        {
+	        for (int i = 0; i < 2; i++)
+	        {
+		        for (int j = 0; j < 2; j++)
+		        {
+			        if (CheckLines(sym, i, j) || CheckDiagonal(sym, i, j))
+				        return true;
+		        }
+	        }
+
+	        return false;
         }
     }
 }
