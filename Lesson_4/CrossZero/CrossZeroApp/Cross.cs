@@ -147,17 +147,22 @@ namespace CrossZero
         /// <returns>Либо истина, либо ложь</returns>
         private bool CheckLines(char sym, int offsetX, int offsetY)
         {
-	        bool column = true, rows = true;
+	        int column = 0, rows = 0;
 	        for (int i = offsetX; i < _winLine + offsetX; i++)
 	        {
 		        for (int j = offsetY; j < _winLine + offsetY; j++)
 		        {
-			        column = column && (field[i, j] == sym);
-			        rows = rows && (field[j, i] == sym);
+			        if (field[i, j] == sym)
+				        column++;
+			        if (field[j, i] == sym)
+				        rows++;
 		        }
 
-		        if (column || rows)
+		        if (column == _winLine || rows == _winLine)
 			        return true;
+
+		        column = 0;
+		        rows = 0;
 	        }
 
 	        return false;
@@ -172,13 +177,13 @@ namespace CrossZero
         /// <returns>Либо истину, либо ложь</returns>
         private bool CheckDiagonal(char sym, int offsetX, int offsetY)
         {
-	        bool toright = true, toleft = true;
+	        bool toRight = true, toLeft = true;
 	        for (int i = 0; i < _winLine; i++)
 	        {
-		        toright = toright && (field[i + offsetX, i + offsetY] == sym);
-		        toleft = toleft && (field[_winLine - i - 1 + offsetX, i + offsetY] == sym);
+		        toRight = toRight && (field[i + offsetX, i + offsetY] == sym);
+		        toLeft = toLeft && (field[_winLine - i - 1 + offsetX, i + offsetY] == sym);
 	        }
-	        if (toright || toleft)
+	        if (toRight || toLeft)
 		        return true;
 
 	        return false;
